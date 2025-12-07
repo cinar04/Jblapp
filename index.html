@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Kulaklık Durumu</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<h1>Kulaklık Durumu</h1>
+<div id="device">Cihaz: —</div>
+<div id="battery">Pil: —</div>
+<div id="status">Durum: —</div>
+<div id="last_online">Son Online: —</div>
+<div id="last_offline">Son Offline: —</div>
+<div id="updated_at">Güncellendi: —</div>
+
+<script>
+async function yukle(){
+ const r = await fetch("status.json?_=" + Date.now());
+ const j = await r.json();
+ document.getElementById("device").innerText = "Cihaz: " + j.device;
+ document.getElementById("battery").innerText = "Pil: " + j.battery + "%";
+ document.getElementById("status").innerText = "Durum: " + (j.online ? "Online" : "Offline");
+ document.getElementById("last_online").innerText = "Son Online: " + j.last_online;
+ document.getElementById("last_offline").innerText = "Son Offline: " + j.last_offline;
+ document.getElementById("updated_at").innerText = "Güncellendi: " + j.updated_at;
+}
+yukle();
+setInterval(yukle,60000);
+</script>
+</body>
+</html>
