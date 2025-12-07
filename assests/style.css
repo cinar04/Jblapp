@@ -1,0 +1,13 @@
+body{
+ background:#111;
+ color:#fff;
+ font-family:sans-serif;
+ padding:20px;
+}
+h1{
+ text-align:center;
+}
+div{
+ margin:10px 0;
+ font-size:20px;
+}
